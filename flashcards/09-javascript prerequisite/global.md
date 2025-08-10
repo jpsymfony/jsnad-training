@@ -28,31 +28,20 @@ console.log(global.myVar); // 123
 global.appName = "MyApp";
 
 
-
 ---
+## Flashcard Node.js – Jour 10
 
-## 📘 Cheat Sheet 2 : Variables globales utiles en Node.js
+### Question  
+Qu’est-ce qu’un module global dans Node.js et comment en créer un soi-même ?
 
-```markdown
-# Cheat Sheet : Variables globales natives
+### Réponse  
+Un module global dans Node.js est un module qui peut être utilisé dans n’importe quel fichier sans avoir besoin de l’importer avec `require`. Par défaut, certains objets comme `console`, `process`, `setTimeout` sont globaux.
 
-## `__dirname`
-Chemin absolu du dossier du script en cours
+Cependant, **il est déconseillé** de créer ses propres variables globales car cela pollue l’espace global et complique la maintenance du code. Mais si besoin :
 
-## `__filename`
-Chemin absolu du fichier en cours
-
-## `module`
-Objet représentant le fichier courant
-
-## `exports`
-Alias de `module.exports` pour exposer des éléments
-
-## `require`
-Fonction pour importer des modules CommonJS
-
-## `process`
-Objet global contenant :
-- `process.env` pour les variables d’environnement
-- `process.argv` pour les arguments CLI
-- `process.exit()` pour quitter
+```js
+// fichier config.js
+global.config = {
+  appName: "JSNAD Prep",
+  version: "1.0.0"
+};
